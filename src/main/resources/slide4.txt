@@ -1,0 +1,7 @@
+* What is MacWire?
+
+  Generates wiring code for class instantiation
+
+* Macro-based as well
+
+* Also replacements for scopes & interceptors

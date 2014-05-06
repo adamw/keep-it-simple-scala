@@ -1,0 +1,9 @@
+* What is Scala Async?
+
+  Transforms blocking-like code into a non-blocking version
+
+* Macro-based - no runtime overhead
+
+* Scala module
+
+* Similar: Akka Dataflow

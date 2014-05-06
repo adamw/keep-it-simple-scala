@@ -1,0 +1,7 @@
+Plan:
+
+* Scala Async: asynchronous code as if it was synchronous
+
+* MacWire: DI without a framework
+
+* Spray: REST server
