@@ -1,7 +1,7 @@
 package com.softwaremill.spray
 
-import spray.routing.{Route, SimpleRoutingApp}
-import akka.actor.ActorSystem
+import spray.routing.{RequestContext, Route, SimpleRoutingApp}
+import akka.actor.{Props, Actor, ActorSystem}
 
 object SprayComplete extends App with SimpleRoutingApp {
   implicit val actorSystem = ActorSystem()
@@ -18,27 +18,35 @@ object SprayComplete extends App with SimpleRoutingApp {
 
   startServer(interface = "localhost", port = 8080) {
     get {
-      pathPrefix("geecon") {
+      pathPrefix("takeaway") {
         path("hello") {
           complete {
-            "Hello World!"
+            "Welcome to the potato & steak take-away!"
           }
         } ~
-        path("parameters" / "demo") {
-          parameters("name"?, "age".as[Int]) { (name, age) =>
+        path("order" / "potatoes") {
+          parameters("mashed".as[Boolean], "number".as[Int], "special"?) { (mashed, number, specialWishes) =>
             complete {
-              s"Hello, ${name.getOrElse("stranger")}. In a year you'll be ${age+1}."
+              s"You ordered ${if (mashed) "mashed" else "normal"} potatoes. " +
+                s"One is free, so you'll get ${number+1} potatoes." +
+                s"Your special wishes: ${specialWishes.getOrElse("none luckily")}"
             }
           }
         } ~
-        path("secure") {
+        path("pay") {
           secure {
-            complete {
-              "secret"
-            }
+            ctx => paymentActor ! ctx
           }
         }
       }
     }
   }
+
+  class PaymentActor extends Actor {
+    def receive = {
+      case ctx: RequestContext => ctx.complete("paid")
+    }
+  }
+
+  lazy val paymentActor = actorSystem.actorOf(Props[PaymentActor])
 }
