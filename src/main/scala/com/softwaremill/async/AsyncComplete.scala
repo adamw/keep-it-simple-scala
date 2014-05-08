@@ -87,8 +87,8 @@ object AsyncComplete extends App {
     val fp = async { cook("potatoes") } // always preparing potatoes
 
     val dish = if (await(wantsRice())) {
-      val fr = async { cook("rice") }
-      await(fs) + await(fr)
+      val rice = cook("rice")
+      await(fs) + rice
     } else {
       await(fs) + await(fp)
     }
