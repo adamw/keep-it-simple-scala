@@ -7,6 +7,7 @@ import scala.util.Random
 
 object AsyncDemo extends App {
   val start = System.currentTimeMillis()
-  def info(msg: String) = printf("%.2f: %s\n", (System.currentTimeMillis() - start)/1000.0, msg)
+  def info(msg: String) = printf("%.2f: %s\n",
+    (System.currentTimeMillis() - start)/1000.0, msg)
 
 }
