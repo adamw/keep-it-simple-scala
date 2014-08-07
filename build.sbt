@@ -2,11 +2,11 @@ name := "keep-it-simple-scala"
 
 version := "1.0"
 
-scalaVersion := "2.11.0"
+scalaVersion := "2.11.2"
 
 resolvers += "spray repo" at "http://repo.spray.io"
 
-val sprayVersion = "1.3.1-20140423"
+val sprayVersion = "1.3.1"
 
 libraryDependencies ++= Seq(
   // akka
@@ -16,8 +16,8 @@ libraryDependencies ++= Seq(
   "io.spray" %% "spray-client" % sprayVersion,
   "io.spray" %% "spray-testkit" % sprayVersion % "test",
   // macwire
-  "com.softwaremill.macwire" %% "macros" % "0.6",
-  "com.softwaremill.macwire" %% "runtime" % "0.6",
+  "com.softwaremill.macwire" %% "macros" % "0.7",
+  "com.softwaremill.macwire" %% "runtime" % "0.7",
   // async
   "org.scala-lang.modules" %% "scala-async" % "0.9.1",
   // util
