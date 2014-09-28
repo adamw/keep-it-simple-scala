@@ -21,6 +21,4 @@
 
 * https://github.com/adamw/keep-it-simple-scala
 
-* I'm proud of my code! --> http://www.codebrag.com/
-
 * @adamwarski
